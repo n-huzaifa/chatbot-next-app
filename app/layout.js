@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
+    <html lang='en' className='scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>
       <body className={montserrat.className}>{children}</body>
     </html>
   )

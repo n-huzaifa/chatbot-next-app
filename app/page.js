@@ -66,7 +66,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className='flex flex-col justify-center p-5 text-black dark:text-white'>
+    <div className='flex flex-col  justify-center p-5 text-black dark:text-white '>
       <h1 className='text-3xl font-bold mb-4'>System Design and Architecture Chatbot</h1>
       <div className='chat-history space-y-4'>
         {chatHistory.map((entry, index) => (
@@ -77,7 +77,7 @@ export default function Chatbot() {
           </div>
         ))}
       </div>
-      <div className='response-buttons mt-4 w-full overflow-x-auto whitespace-nowrap'>
+      <div className='response-buttons mt-4 w-full overflow-x-auto scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 whitespace-nowrap'>
         {Object.keys(responses).map((question, index) => (
           <button
             key={index}
