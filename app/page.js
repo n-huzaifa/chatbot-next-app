@@ -67,7 +67,7 @@ export default function Chatbot() {
 
   return (
     <div className='flex flex-col justify-center p-5 text-black dark:text-white'>
-      <h1 className='text-3xl font-bold mb-4'>Chatbot</h1>
+      <h1 className='text-3xl font-bold mb-4'>System Design and Architecture Chatbot</h1>
       <div className='chat-history space-y-4'>
         {chatHistory.map((entry, index) => (
           <div key={index} className='bg-gray-500 p-4 rounded-lg'>
