@@ -19,3 +19,12 @@ body {
   background: linear-gradient(90deg, rgba(130, 124, 236, 1) 0%, rgba(74, 74, 205, 1) 0%, rgba(78, 225, 255, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#827cec",endColorstr="#4ee1ff",GradientType=1);
 }
+
+@media (max-width: 1023px) {
+  .chatbot-container {
+    display: none;
+  }
+  .chatbot-resolution-page {
+    display: block;
+  }
+}
