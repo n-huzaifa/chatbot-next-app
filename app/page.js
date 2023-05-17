@@ -15,6 +15,14 @@ export default function Chatbot() {
     setChatHistory([...chatHistory, { userQuery: response, chatResponse: responses[response] }])
   }
 
+  const clearHistory = () => {
+    setChatHistory([])
+  }
+
+  const setInput = (e) => {
+    setUserInput(e.target.outerText)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const userQuery = userInput.trim()
@@ -24,7 +32,6 @@ export default function Chatbot() {
     setUserInput('')
   }
 
-  // Update screen width on window resize
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth)
@@ -34,7 +41,11 @@ export default function Chatbot() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const responseButtons = Object.keys(responses).map((response, index) => <p key={index}>{response}</p>)
+  const responseButtons = Object.keys(responses).map((response, index) => (
+    <p key={index} onClick={setInput} className='cursor-pointer'>
+      {response}
+    </p>
+  ))
 
   return (
     <div className='flex justify-center'>
@@ -96,19 +107,22 @@ export default function Chatbot() {
               </form>
             </div>
           </div>
-          <footer class='absolute bottom-10 left-3 flex flex-col text-md space-y-4'>
-            <span class='font-semibold text-sm cursor-default'>
-              developed by <span class='cursor-pointer hover:text-yellow-300 transition duration-300'>Noor </span>
-              <span class='cursor-pointer hover:text-red-400 transition duration-300'>ul </span>
-              <span class='cursor-pointer hover:text-green-400 transition duration-300'>Islam </span>
-              <span class='cursor-pointer hover:text-blue-400 transition duration-300'>Huzaifa</span>
+          <footer className='absolute bottom-10 left-3 flex flex-col text-md space-y-4'>
+            <button className='bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 ml-2 rounded' onClick={clearHistory}>
+              Clear Chat
+            </button>
+            <span className='font-semibold text-sm cursor-default'>
+              developed by <span className='cursor-pointer hover:text-yellow-300 transition duration-300'>Noor </span>
+              <span className='cursor-pointer hover:text-red-400 transition duration-300'>ul </span>
+              <span className='cursor-pointer hover:text-green-400 transition duration-300'>Islam </span>
+              <span className='cursor-pointer hover:text-blue-400 transition duration-300'>Huzaifa</span>
             </span>
-            <div class='flex justify-center space-x-4'>
-              <a href='https://twitter.com/Diple_me' class='text-2xl hover:text-blue-400 transition duration-300'>
+            <div className='flex justify-center space-x-4'>
+              <a href='https://twitter.com/Diple_me' className='text-2xl hover:text-blue-400 transition duration-300'>
                 <svg
                   stroke='currentColor'
                   fill='currentColor'
-                  stroke-width='0'
+                  strokeWidth='0'
                   viewBox='0 0 512 512'
                   height='1em'
                   width='1em'
@@ -119,12 +133,12 @@ export default function Chatbot() {
               </a>
               <a
                 href='https://github.com/n-huzaifa/chatbot-next-app'
-                class='text-2xl hover:text-gray-400 transition duration-300'
+                className='text-2xl hover:text-gray-400 transition duration-300'
               >
                 <svg
                   stroke='currentColor'
                   fill='currentColor'
-                  stroke-width='0'
+                  strokeWidth='0'
                   viewBox='0 0 496 512'
                   height='1em'
                   width='1em'
@@ -135,12 +149,12 @@ export default function Chatbot() {
               </a>
               <a
                 href='https://www.linkedin.com/in/noor-ul-islam-huzaifa-67505a201/'
-                class='text-2xl hover:text-blue-400 transition duration-300'
+                className='text-2xl hover:text-blue-400 transition duration-300'
               >
                 <svg
                   stroke='currentColor'
                   fill='currentColor'
-                  stroke-width='0'
+                  strokeWidth='0'
                   viewBox='0 0 448 512'
                   height='1em'
                   width='1em'
