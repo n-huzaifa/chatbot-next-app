@@ -52,6 +52,10 @@ export default function Chatbot() {
     setUserInput(e.target.value)
   }
 
+  const handleResponse = (response) => {
+    setChatHistory([...chatHistory, { userQuery: response, chatResponse: responses[response] }])
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const userQuery = userInput.trim()
@@ -62,21 +66,38 @@ export default function Chatbot() {
   }
 
   return (
-    <div>
-      <h1>Chatbot</h1>
-      <div className='chat-history'>
+    <div className='flex flex-col justify-center p-5 text-black dark:text-white'>
+      <h1 className='text-3xl font-bold mb-4'>Chatbot</h1>
+      <div className='chat-history space-y-4'>
         {chatHistory.map((entry, index) => (
-          <div key={index} className='chat-entry'>
-            <strong>User:</strong> {entry.userQuery}
+          <div key={index} className='bg-gray-500 p-4 rounded-lg'>
+            <strong className='text-blue-600'>User:</strong> {entry.userQuery}
             <br />
-            <strong>Chatbot:</strong> {entry.chatResponse}
-            <hr />
+            <strong className='text-blue-600'>Chatbot:</strong> {entry.chatResponse}
           </div>
         ))}
       </div>
-      <form onSubmit={handleSubmit}>
-        <input type='text' value={userInput} onChange={handleChange} />
-        <button type='submit'>Send</button>
+      <div className='response-buttons mt-4 w-full overflow-x-auto whitespace-nowrap'>
+        {Object.keys(responses).map((question, index) => (
+          <button
+            key={index}
+            onClick={() => handleResponse(question)}
+            className='inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2 w-72 truncate'
+          >
+            {question}
+          </button>
+        ))}
+      </div>
+      <form onSubmit={handleSubmit} className='mt-4'>
+        <input
+          type='text'
+          value={userInput}
+          onChange={handleChange}
+          className='border border-gray-300 rounded py-2 px-4 text-gray-800'
+        />
+        <button type='submit' className='bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 ml-2 rounded'>
+          Send
+        </button>
       </form>
     </div>
   )
