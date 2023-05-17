@@ -5,7 +5,7 @@ import responses from './responses'
 export default function Chatbot() {
   const [userInput, setUserInput] = useState('')
   const [chatHistory, setChatHistory] = useState([])
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [screenWidth, setScreenWidth] = useState(window.screen.width)
 
   const handleChange = (e) => {
     setUserInput(e.target.value)
@@ -34,7 +34,7 @@ export default function Chatbot() {
 
   useEffect(() => {
     const handleResize = () => {
-      setScreenWidth(window.innerWidth)
+      setScreenWidth(window.screen.width)
     }
 
     window.addEventListener('resize', handleResize)
